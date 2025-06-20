@@ -13,7 +13,7 @@ df = pd.read_csv("cleaned_quotes.csv")
 # Load models
 @st.cache_resource
 def load_models():
-    embed_model = SentenceTransformer("fine-tuned-quotes-model")
+    embed_model = SentenceTransformer("all-MiniLM-L6-v2")
     gen_model = pipeline("text2text-generation", model="google/flan-t5-base")
     return embed_model, gen_model
 
