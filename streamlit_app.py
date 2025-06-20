@@ -82,7 +82,7 @@ st.markdown(
     """
     <hr style="margin-top: 3rem; margin-bottom: 1rem;">
     <div style='text-align: center; font-size: 0.9rem; color: #999999;'>
-        Made with ❤️ by <a href="https://github.com/abhishek" target="_blank" style="color: #999999;">Abhishek</a>
+        Made with ❤️ by <a href="https://github.com/abhishekdave331" target="_blank" style="color: #999999;">Abhishek</a>
     </div>
     """,
     unsafe_allow_html=True
