@@ -49,6 +49,10 @@ def rag_pipeline(query, k=5):
 
 # Streamlit UI
 st.set_page_config(page_title="Semantic Quote Search", layout="wide")
+st.markdown(
+    "<h1 style='text-align: center; color: #4B8BBE;'>✨ Semantic Quote Explorer ✨</h1>",
+    unsafe_allow_html=True
+)
 
 st.title("📚 Semantic Quote Explorer")
 st.write("Search through quotes using natural language. Powered by Sentence Transformers, FAISS, and RAG with Flan-T5.")
