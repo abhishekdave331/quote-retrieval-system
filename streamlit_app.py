@@ -77,7 +77,7 @@ if st.button("Search") and query:
     st.dataframe(quotes_df[['quote', 'author', 'tags', 'similarity_score']])
 
 for idx, row in quotes_df.iterrows():
-    with st.expander(f"💬 Quote {idx+1} (Score: {row['similarity_score']})"):
+    with st.expander(f"💬 Quote {idx+1} (Score: {np.round(row['similarity_score'], 2)})"):
         st.markdown(f"**Quote**: {row['quote']}")
         st.markdown(f"**Author**: `{row['author']}`")
         st.markdown(f"**Tags**: {', '.join(eval(row['tags'])) if isinstance(row['tags'], str) else row['tags']}")
