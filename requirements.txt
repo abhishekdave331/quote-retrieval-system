@@ -4,3 +4,4 @@ transformers
 faiss-cpu
 pandas
 numpy
+plotly
