@@ -65,16 +65,14 @@ with st.container():
     query = st.text_input("Type your query:", placeholder="e.g. quotes about loneliness by authors who overcame adversity")
     top_k = st.slider("Number of Quotes to Retrieve", 1, 10, 5)
 
-
 if st.button("Search") and query:
-    with st.spinner("Retrieving and generating summary..."):
+    with st.spinner("Searching..."):
         summary, quotes_df = rag_pipeline(query, k=top_k)
+    st.success("🔍 Results Ready!")
 
-    st.subheader("📜 Generated Summary")
-    st.success(summary)
+st.subheader("📜 Generated Summary")
+st.code(summary, language='markdown')
 
-    st.subheader("🔍 Retrieved Quotes")
-    st.dataframe(quotes_df[['quote', 'author', 'tags', 'similarity_score']])
 
 for idx, row in quotes_df.iterrows():
     with st.expander(f"💬 Quote {idx+1} (Score: {np.round(row['similarity_score'], 2)})", expanded=True):
@@ -83,9 +81,11 @@ for idx, row in quotes_df.iterrows():
         st.markdown(f"**Tags**: {', '.join(eval(row['tags'])) if isinstance(row['tags'], str) else row['tags']}")
 
 st.markdown(
-    "<div style='text-align: center; color: gray;'>"
-    "Made with ❤️ by Abhishek | "
-    "<a href='https://github.com/abhishekdave331' style='color: gray;' target='_blank'>GitHub</a>"
-    "</div>",
+    """
+    <hr style="margin-top: 3rem; margin-bottom: 1rem;">
+    <div style='text-align: center; font-size: 0.9rem; color: #999999;'>
+        Made with ❤️ by <a href="https://github.com/abhishek" target="_blank" style="color: #999999;">Abhishek</a>
+    </div>
+    """,
     unsafe_allow_html=True
 )
