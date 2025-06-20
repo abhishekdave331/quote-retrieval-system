@@ -67,3 +67,10 @@ if st.button("Search") and query:
     st.subheader("🔍 Retrieved Quotes")
     st.dataframe(quotes_df[['quote', 'author', 'tags', 'similarity_score']])
 
+st.markdown(
+    "<div style='text-align: center; color: gray;'>"
+    "Made with ❤️ by Abhishek | "
+    "<a href='https://github.com/abhishekdave331' style='color: gray;' target='_blank'>GitHub</a>"
+    "</div>",
+    unsafe_allow_html=True
+)
