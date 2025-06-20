@@ -70,15 +70,14 @@ if st.button("Search") and query:
         summary, quotes_df = rag_pipeline(query, k=top_k)
     st.success("🔍 Results Ready!")
 
-st.subheader("📜 Generated Summary")
-st.code(summary, language='markdown')
+    st.subheader("📜 Generated Summary")
+    st.code(summary, language='markdown')
 
-
-for idx, row in quotes_df.iterrows():
-    with st.expander(f"💬 Quote {idx+1} (Score: {np.round(row['similarity_score'], 2)})", expanded=True):
-        st.markdown(f"**Quote**: {row['quote']}")
-        st.markdown(f"**Author**: `{row['author']}`")
-        st.markdown(f"**Tags**: {', '.join(eval(row['tags'])) if isinstance(row['tags'], str) else row['tags']}")
+    for idx, row in quotes_df.iterrows():
+        with st.expander(f"💬 Quote {idx+1} (Score: {np.round(row['similarity_score'], 2)})", expanded=True):
+            st.markdown(f"**Quote**: {row['quote']}")
+            st.markdown(f"**Author**: `{row['author']}`")
+            st.markdown(f"**Tags**: {', '.join(eval(row['tags'])) if isinstance(row['tags'], str) else row['tags']}")
 
 st.markdown(
     """
