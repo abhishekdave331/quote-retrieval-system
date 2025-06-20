@@ -54,7 +54,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("📚 Semantic Quote Explorer")
+with st.expander("📖 What does this app do?", expanded=True):
+    st.markdown(
+        "This app lets you search meaningful quotes using natural language. "
+        "It uses a semantic retrieval pipeline powered by Sentence Transformers, FAISS, and Flan-T5."
+    )
+
 st.write("Search through quotes using natural language. Powered by Sentence Transformers, FAISS, and RAG with Flan-T5.")
 
 query = st.text_input("🔎 Enter your quote-related query:", placeholder="e.g. quotes about failure by female scientists")
