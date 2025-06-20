@@ -91,6 +91,8 @@ def show_scores_chart(df):
     )
     st.plotly_chart(fig, use_container_width=True)
 
+show_scores_chart(quotes_df)
+
 st.markdown(
     "<div style='text-align: center; color: gray;'>"
     "Made with ❤️ by Abhishek | "
