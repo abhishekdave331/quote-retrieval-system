@@ -68,10 +68,9 @@ with st.container():
 if st.button("Search") and query:
     with st.spinner("Searching..."):
         summary, quotes_df = rag_pipeline(query, k=top_k)
-    st.success("🔍 Results Ready!")
 
     st.subheader("📜 Generated Summary")
-    st.code(summary, language='markdown')
+    st.success(summary)
 
     for idx, row in quotes_df.iterrows():
         with st.expander(f"💬 Quote {idx+1} (Score: {np.round(row['similarity_score'], 2)})", expanded=True):
