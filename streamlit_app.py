@@ -76,22 +76,11 @@ if st.button("Search") and query:
     st.subheader("🔍 Retrieved Quotes")
     st.dataframe(quotes_df[['quote', 'author', 'tags', 'similarity_score']])
 
-import plotly.express as px
-
-def show_scores_chart(df):
-    fig = px.bar(
-        df,
-        x='similarity_score',
-        y='quote',
-        orientation='h',
-        title="🔍 Quote Similarity Scores",
-        labels={'similarity_score': 'Score', 'quote': 'Quote'},
-        color='similarity_score',
-        color_continuous_scale='Blues'
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-show_scores_chart(quotes_df)
+for idx, row in quotes_df.iterrows():
+    with st.expander(f"💬 Quote {idx+1} (Score: {row['similarity_score']})"):
+        st.markdown(f"**Quote**: {row['quote']}")
+        st.markdown(f"**Author**: `{row['author']}`")
+        st.markdown(f"**Tags**: {', '.join(eval(row['tags'])) if isinstance(row['tags'], str) else row['tags']}")
 
 st.markdown(
     "<div style='text-align: center; color: gray;'>"
