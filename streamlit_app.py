@@ -17,17 +17,19 @@ def load_models():
     gen_model = pipeline("text2text-generation", model="google/flan-t5-base")
     return embed_model, gen_model
 
+# Load model globally, outside of caching
 model, generator = load_models()
 
-# Create FAISS index
+# Create FAISS index — now ONLY pass plain hashable types like strings/lists
 @st.cache_resource
-def create_faiss_index(quotes, model):
+def create_faiss_index(quotes):
     embeddings = model.encode(quotes, show_progress_bar=False)
     index = faiss.IndexFlatL2(embeddings.shape[1])
     index.add(np.array(embeddings))
     return index, embeddings
 
-index, quote_embeddings = create_faiss_index(df['quote'].tolist(), model)
+# Call function without passing the model
+index, quote_embeddings = create_faiss_index(df['quote'].tolist())
 
 # Retrieval function
 def retrieve_top_k(query, k=5):
