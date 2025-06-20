@@ -50,7 +50,7 @@ def rag_pipeline(query, k=5):
 # Streamlit UI
 st.set_page_config(page_title="Semantic Quote Search", layout="wide")
 st.markdown(
-    "<h1 style='text-align: center; color: #4B8BBE;'>✨ Semantic Quote Explorer ✨</h1>",
+    "<h1 style='text-align: left; color: #4B8BBE;'>✨ Semantic Quote Explorer ✨</h1>",
     unsafe_allow_html=True
 )
 
